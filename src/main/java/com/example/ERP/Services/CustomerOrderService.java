@@ -10,4 +10,6 @@ public interface CustomerOrderService {
     void deleteCustomerOrder(Long id);
     CustomerOrderDTO getCustomerOrderById(Long id);
     List<CustomerOrderDTO> getAllCustomerOrders();
+    List<CustomerOrderDTO> searchOrders(String code, String typeBC, String typeNBT, String projet, Boolean actif, Boolean valide, Double montant, String contactCadre, String nature, Long clientId);
+
 }

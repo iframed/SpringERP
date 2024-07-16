@@ -10,5 +10,5 @@ public interface SupplierService {
     void deleteSupplier(Long id);
     SupplierDTO getSupplierById(Long id);
     List<SupplierDTO> getAllSuppliers();
-
+    List<SupplierDTO> searchSuppliers(String name, String contact, String email, String phone, String productName);
 }

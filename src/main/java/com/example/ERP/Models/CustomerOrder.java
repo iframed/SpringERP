@@ -28,7 +28,15 @@ public class CustomerOrder {
     private Long id;
     private LocalDate orderDate;
     private String status;
-
+    private String code;
+    private String typeBC;
+    private String typeNBT;
+    private String projet;
+    private boolean actif;
+    private boolean valide;
+    private Double montant;
+    private String contactCadre;
+    private String nature;
     @ManyToOne
     private Client client;
     

@@ -29,9 +29,17 @@ public class GoodsReceipt {
     private Long id;
     private LocalDate receiptDate;
     private String status;
+    private String codeBL;
+    private String codeBC;
+    private String codeProjet;
+    private String type;
+    //private Long clientId;
 
     @ManyToOne
     private PurchaseOrder purchaseOrder;
+
+    @ManyToOne
+    private Client client;
 
     @OneToMany(mappedBy = "goodsReceipt", cascade = CascadeType.ALL)
     private List<GoodsReceiptItem> goodsReceiptItems;

@@ -25,9 +25,17 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    private String societe;
+    private String contact;
     private String email;
     private String phone;
+    private String profilSociete;
+    private String categorie;
+    private String sousCategorie;
+    private boolean actif;
+    private boolean bloque;
+    private String typeClient;
+
 
     @OneToMany(mappedBy = "client")
     private List<CustomerOrder> orders;

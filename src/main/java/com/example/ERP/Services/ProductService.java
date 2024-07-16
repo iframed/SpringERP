@@ -10,4 +10,6 @@ public interface ProductService {
     void deleteProduct(Long id);
     ProductDTO getProductById(Long id);
     List<ProductDTO> getAllProducts();
+    List<ProductDTO> searchProducts(String reference, String designation, Long categoryId, Long supplierId, String city, Boolean disponible);
+
 }

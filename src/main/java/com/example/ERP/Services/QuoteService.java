@@ -10,4 +10,5 @@ public interface QuoteService {
     void deleteQuote(Long id);
     QuoteDTO getQuoteById(Long id);
     List<QuoteDTO> getAllQuotes();
+    List<QuoteDTO> searchQuotes(String code, String revision, String objet, Boolean actif, Boolean valide, String statut, Double montant, String nature, String projet, Long clientId);
 }

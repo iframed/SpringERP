@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ERP.Dto.SupplierDTO;
@@ -18,6 +20,7 @@ import com.example.ERP.Services.SupplierService;
 
 
 @RestController
+@CrossOrigin("http://localhost:4200/")
 @RequestMapping("/api/suppliers")
 public class SupplierController {
     @Autowired
@@ -50,6 +53,18 @@ public class SupplierController {
     @GetMapping
     public ResponseEntity<List<SupplierDTO>> getAllSuppliers() {
         List<SupplierDTO> suppliers = supplierService.getAllSuppliers();
+        return ResponseEntity.ok(suppliers);
+    }
+
+
+    @GetMapping("/search")
+    public ResponseEntity<List<SupplierDTO>> searchSuppliers(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String contact,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String phone,
+            @RequestParam(required = false) String productName) {
+        List<SupplierDTO> suppliers = supplierService.searchSuppliers(name, contact, email, phone, productName);
         return ResponseEntity.ok(suppliers);
     }
 }

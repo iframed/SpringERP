@@ -52,5 +52,12 @@ public class SupplierServiceImpl  implements SupplierService {
     public List<SupplierDTO> getAllSuppliers() {
         return supplierRepository.findAll().stream().map(SupplierMapper::toDTO).collect(Collectors.toList());
     }
+
+    @Override
+    public List<SupplierDTO> searchSuppliers(String name, String contact, String email, String phone, String productName) {
+        List<Supplier> suppliers = supplierRepository.searchSuppliers(name, contact, email, phone, productName);
+        return suppliers.stream().map(SupplierMapper::toDTO).collect(Collectors.toList());
+    }
+
     
 }

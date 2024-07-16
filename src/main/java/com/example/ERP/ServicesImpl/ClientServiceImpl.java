@@ -29,7 +29,7 @@ public class ClientServiceImpl  implements ClientService {
     @Override
     public ClientDTO updateClient(Long id, ClientDTO clientDTO) {
         Client client = clientRepository.findById(id).orElseThrow(() -> new RuntimeException("Client not found"));
-        client.setName(clientDTO.getName());
+        client.setCategorie(clientDTO.getCategorie());
         client.setEmail(clientDTO.getEmail());
         client.setPhone(clientDTO.getPhone());
         Client updatedClient = clientRepository.save(client);
@@ -50,5 +50,11 @@ public class ClientServiceImpl  implements ClientService {
     @Override
     public List<ClientDTO> getAllClients() {
         return clientRepository.findAll().stream().map(ClientMapper::toDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ClientDTO> searchClients(String societe, String contact, String email, String phone, String profilSociete, String categorie, String sousCategorie, Boolean actif, Boolean bloque, String typeClient) {
+        List<Client> clients = clientRepository.searchClients(societe, contact, email, phone, profilSociete, categorie, sousCategorie, actif, bloque, typeClient);
+        return clients.stream().map(ClientMapper::toDTO).collect(Collectors.toList());
     }
 }

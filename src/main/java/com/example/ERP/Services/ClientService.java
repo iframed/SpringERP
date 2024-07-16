@@ -10,4 +10,5 @@ public interface ClientService {
     void deleteClient(Long id);
     ClientDTO getClientById(Long id);
     List<ClientDTO> getAllClients();
+    List<ClientDTO> searchClients(String societe, String contact, String email, String phone, String profilSociete, String categorie, String sousCategorie, Boolean actif, Boolean bloque, String typeClient);
 }

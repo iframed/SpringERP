@@ -14,6 +14,11 @@ public class GoodsReceiptDTO {
     private Long id;
     private LocalDate receiptDate;
     private String status;
+    private String codeBL;
+    private String codeBC;
+    private String codeProjet;
+    private String type;
+    private Long clientId;
     private Long purchaseOrderId;
     private List<Long> goodsReceiptItemIds;
 }

@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,17 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
+    private String reference;
+    private String designation;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
+
+    private String city;
+    private boolean disponible;
+
 
     @OneToMany(mappedBy = "product")
     private List<Inventory> inventories;

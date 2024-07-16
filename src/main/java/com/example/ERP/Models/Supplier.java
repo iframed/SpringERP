@@ -28,6 +28,8 @@ public class Supplier {
     private String contact;
     private String email;
     private String phone;
+    @OneToMany(mappedBy = "supplier")
+    private List<Product> products;
 
     @OneToMany(mappedBy = "supplier")
     private List<PurchaseOrder> purchaseOrders;

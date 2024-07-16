@@ -50,5 +50,11 @@ public class CustomerOrderServiceImpl  implements CustomerOrderService {
     public List<CustomerOrderDTO> getAllCustomerOrders() {
         return customerOrderRepository.findAll().stream().map(CustomerOrderMapper::toDTO).collect(Collectors.toList());
     }
+
+    @Override
+    public List<CustomerOrderDTO> searchOrders(String code, String typeBC, String typeNBT, String projet, Boolean actif, Boolean valide, Double montant, String contactCadre, String nature, Long clientId) {
+        List<CustomerOrder> orders = customerOrderRepository.searchOrders(code, typeBC, typeNBT, projet, actif, valide, montant, contactCadre, nature, clientId);
+        return orders.stream().map(CustomerOrderMapper::toDTO).collect(Collectors.toList());
+    }
     
 }

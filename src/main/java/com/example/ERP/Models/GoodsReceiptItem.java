@@ -21,12 +21,13 @@ public class GoodsReceiptItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String productName;
+    private Integer quantity;
+    private Double price;
 
     @ManyToOne
     private GoodsReceipt goodsReceipt;
 
     @ManyToOne
     private Product product;
-
-    private int quantity;
 }

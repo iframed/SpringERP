@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GoodsReceiptItemDTO {
     private Long id;
-    private int quantity;
+    private String productName;
+    private Integer quantity;
+    private Double price;
     private Long goodsReceiptId;
     private Long productId;
 }

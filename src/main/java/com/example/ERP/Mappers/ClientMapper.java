@@ -14,22 +14,35 @@ import com.example.ERP.Models.Quote;
 public class ClientMapper {
     public static ClientDTO toDTO(Client client) {
         return new ClientDTO(
-                client.getId(),
-                client.getName(),
-                client.getEmail(),
-                client.getPhone(),
-                client.getOrders() != null ? client.getOrders().stream().map(CustomerOrder::getId).collect(Collectors.toList()) : null,
-                client.getQuotes() != null ? client.getQuotes().stream().map(Quote::getId).collect(Collectors.toList()) : null
+            client.getId(),
+            client.getSociete(),
+            client.getContact(),
+            client.getEmail(),
+            client.getPhone(),
+            client.getProfilSociete(),
+            client.getCategorie(),
+            client.getSousCategorie(),
+            client.isActif(),
+            client.isBloque(),
+            client.getTypeClient(),
+            client.getOrders() != null ? client.getOrders().stream().map(CustomerOrder::getId).collect(Collectors.toList()) : null,
+            client.getQuotes() != null ? client.getQuotes().stream().map(Quote::getId).collect(Collectors.toList()) : null
         );
     }
 
     public static Client toEntity(ClientDTO clientDTO) {
         Client client = new Client();
         client.setId(clientDTO.getId());
-        client.setName(clientDTO.getName());
+        client.setSociete(clientDTO.getSociete());
+        client.setContact(clientDTO.getContact());
         client.setEmail(clientDTO.getEmail());
         client.setPhone(clientDTO.getPhone());
-        // orders and quotes should be set by service layer or ORM relationships
+        client.setProfilSociete(clientDTO.getProfilSociete());
+        client.setCategorie(clientDTO.getCategorie());
+        client.setSousCategorie(clientDTO.getSousCategorie());
+        client.setActif(clientDTO.isActif());
+        client.setBloque(clientDTO.isBloque());
+        client.setTypeClient(clientDTO.getTypeClient());
         return client;
     }
 }

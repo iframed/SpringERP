@@ -13,14 +13,17 @@ import com.example.ERP.Models.Supplier;
 public class SupplierMapper {
     public static SupplierDTO toDTO(Supplier supplier) {
         return new SupplierDTO(
-                supplier.getId(),
-                supplier.getName(),
-                supplier.getContact(),
-                supplier.getEmail(),
-                supplier.getPhone(),
-                supplier.getPurchaseOrders() != null ? supplier.getPurchaseOrders().stream().map(PurchaseOrder::getId).collect(Collectors.toList()) : null
-        );
+            supplier.getId(),
+            supplier.getName(),
+            supplier.getContact(),
+            supplier.getEmail(),
+            supplier.getPhone(),
+            supplier.getProducts() != null ? supplier.getProducts().stream().map(ProductMapper::toDTO).collect(Collectors.toList()) : null,
+
+            supplier.getPurchaseOrders() != null ? supplier.getPurchaseOrders().stream().map(PurchaseOrder::getId).collect(Collectors.toList()) : null
+    );
     }
+
 
     public static Supplier toEntity(SupplierDTO supplierDTO) {
         Supplier supplier = new Supplier();
