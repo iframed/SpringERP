@@ -18,7 +18,6 @@ import com.example.ERP.Models.Supplier;
 public class ProductMapper {
     public static ProductDTO toDTO(Product product) {
         return new ProductDTO(
-            
             product.getId(),
             product.getName(),
             product.getReference(),
@@ -35,7 +34,7 @@ public class ProductMapper {
             product.getQuoteItems() != null ? product.getQuoteItems().stream().map(QuoteItem::getId).collect(Collectors.toList()) : null,
             product.getPurchaseOrderItems() != null ? product.getPurchaseOrderItems().stream().map(PurchaseOrderItem::getId).collect(Collectors.toList()) : null,
             product.getGoodsReceiptItems() != null ? product.getGoodsReceiptItems().stream().map(GoodsReceiptItem::getId).collect(Collectors.toList()) : null
-    );
+        );
     }
 
     public static Product toEntity(ProductDTO productDTO) {
@@ -45,29 +44,23 @@ public class ProductMapper {
         product.setDesignation(productDTO.getDesignation());
         product.setPrice(productDTO.getPrice());
         product.setName(productDTO.getName());
-        
-        
-        
 
         // Category and Supplier should be set by the service layer or ORM relationships
         if (productDTO.getCategoryId() != null) {
             Category category = new Category();
             category.setId(productDTO.getCategoryId());
-            category.setName(productDTO.getCategoryName());
             product.setCategory(category);
         }
 
         if (productDTO.getSupplierId() != null) {
             Supplier supplier = new Supplier();
             supplier.setId(productDTO.getSupplierId());
-            supplier.setName(productDTO.getSupplierName());
             product.setSupplier(supplier);
         }
 
         product.setCity(productDTO.getCity());
         product.setDisponible(productDTO.isDisponible());
 
-        // Inventories, orderItems, quoteItems, purchaseOrderItems, goodsReceiptItems should be set by service layer or ORM relationships
         return product;
     }
 }

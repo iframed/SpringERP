@@ -23,6 +23,19 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDTO createProduct(ProductDTO productDTO) {
         Product product = ProductMapper.toEntity(productDTO);
+        
+        if (productDTO.getCategoryId() != null) {
+            Category category = new Category();
+            category.setId(productDTO.getCategoryId());
+            product.setCategory(category);
+        }
+
+        if (productDTO.getSupplierId() != null) {
+            Supplier supplier = new Supplier();
+            supplier.setId(productDTO.getSupplierId());
+            product.setSupplier(supplier);
+        }
+
         Product savedProduct = productRepository.save(product);
         return ProductMapper.toDTO(savedProduct);
     }
@@ -33,8 +46,7 @@ public class ProductServiceImpl implements ProductService {
         product.setReference(productDTO.getReference());
         product.setDesignation(productDTO.getDesignation());
         product.setPrice(productDTO.getPrice());
-       
-
+        product.setName(productDTO.getName());
 
         // Update category if provided
         if (productDTO.getCategoryId() != null) {
