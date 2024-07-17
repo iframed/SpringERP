@@ -10,4 +10,5 @@ public interface PurchaseOrderService {
     void deletePurchaseOrder(Long id);
     PurchaseOrderDTO getPurchaseOrderById(Long id);
     List<PurchaseOrderDTO> getAllPurchaseOrders();
+    List<PurchaseOrderDTO> searchPurchaseOrders(String code, String typeBC, String projet, Double montant, String fournisseur, Long supplierId);
 }

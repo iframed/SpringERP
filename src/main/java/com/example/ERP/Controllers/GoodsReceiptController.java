@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +22,7 @@ import com.example.ERP.Services.GoodsReceiptService;
 
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/goods-receipts")
 public class GoodsReceiptController {
     @Autowired
@@ -63,9 +66,10 @@ public class GoodsReceiptController {
             @RequestParam(required = false) String codeProjet,
             @RequestParam(required = false) String status,
             @RequestParam(required = false) Long clientId,
-            @RequestParam(required = false) LocalDate startDate,
-            @RequestParam(required = false) LocalDate endDate) {
-        List<GoodsReceiptDTO> goodsReceipts = goodsReceiptService.searchGoodsReceipts(codeBL, codeBC, type, codeProjet, status, clientId, startDate, endDate);
+            @RequestParam(required = false) Long purchaseOrderId,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        List<GoodsReceiptDTO> goodsReceipts = goodsReceiptService.searchGoodsReceipts(codeBL, codeBC, type, codeProjet, status, clientId, purchaseOrderId, startDate, endDate);
         return ResponseEntity.ok(goodsReceipts);
     }
 }

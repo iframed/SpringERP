@@ -11,5 +11,5 @@ public interface GoodsReceiptService {
     void deleteGoodsReceipt(Long id);
     GoodsReceiptDTO getGoodsReceiptById(Long id);
     List<GoodsReceiptDTO> getAllGoodsReceipts();
-    List<GoodsReceiptDTO> searchGoodsReceipts(String codeBL, String codeBC, String type, String codeProjet, String status, Long clientId, LocalDate startDate, LocalDate endDate);
+    List<GoodsReceiptDTO> searchGoodsReceipts(String codeBL, String codeBC, String type, String codeProjet, String status, Long clientId, Long purchaseOrderId, LocalDate startDate, LocalDate endDate);
 }

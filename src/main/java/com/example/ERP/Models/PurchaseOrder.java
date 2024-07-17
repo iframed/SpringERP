@@ -28,7 +28,12 @@ public class PurchaseOrder {
     private Long id;
     private LocalDate orderDate;
     private String status;
-
+    private String code;
+    private String typeBC;
+    private String projet;
+    private Double montant;
+    private String fournisseur;
+    
     @ManyToOne
     private Supplier supplier;
 

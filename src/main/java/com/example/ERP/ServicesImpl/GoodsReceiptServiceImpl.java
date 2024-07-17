@@ -104,8 +104,8 @@ public class GoodsReceiptServiceImpl  implements GoodsReceiptService {
     }
 
     @Override
-    public List<GoodsReceiptDTO> searchGoodsReceipts(String codeBL, String codeBC, String type, String codeProjet, String status, Long clientId, LocalDate startDate, LocalDate endDate) {
-        List<GoodsReceipt> receipts = goodsReceiptRepository.searchGoodsReceipts(codeBL, codeBC, type, codeProjet, status, clientId, startDate, endDate);
+    public List<GoodsReceiptDTO> searchGoodsReceipts(String codeBL, String codeBC, String type, String codeProjet, String status, Long clientId, Long purchaseOrderId, LocalDate startDate, LocalDate endDate) {
+        List<GoodsReceipt> receipts = goodsReceiptRepository.searchGoodsReceipts(codeBL, codeBC, type, codeProjet, status, clientId, purchaseOrderId, startDate, endDate);
         return receipts.stream().map(GoodsReceiptMapper::toDTO).collect(Collectors.toList());
     }
 

@@ -14,6 +14,11 @@ public class PurchaseOrderDTO {
     private Long id;
     private LocalDate orderDate;
     private String status;
+    private String code;
+    private String typeBC;
+    private String projet;
+    private Double montant;
+    private String fournisseur;
     private Long supplierId;
     private List<Long> purchaseOrderItemIds;
     private List<Long> goodsReceiptIds;
